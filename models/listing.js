@@ -7,20 +7,21 @@ const listingSchema = new Schema({
         required: true,
     },
     description: String,
-    image: {
-        url: {
-            type: String,
-            default: "https://unsplash.com/illustrations/a-living-room-filled-with-furniture-and-a-painting-on-the-wall--pJGuTHRd6E"
-        },
-        filename: {
-            type: String,
-            default: "listingimage"
-        }
-        //type: String,
-        //default: "https://unsplash.com/illustrations/a-living-room-filled-with-furniture-and-a-painting-on-the-wall--pJGuTHRd6E",
-        //set: (v) =>  v === "" 
-        //? "https://unsplash.com/illustrations/a-living-room-filled-with-furniture-and-a-painting-on-the-wall--pJGuTHRd6E" 
-        //: v,
+    // image: {
+    //     url: {
+    //         type: String,
+    //         default: "https://unsplash.com/illustrations/a-living-room-filled-with-furniture-and-a-painting-on-the-wall--pJGuTHRd6E"
+    //     },
+    //     filename: {
+    //         type: String,
+    //         default: "listingimage"
+    //     }
+    image:{
+        type: String,
+        default: "https://unsplash.com/illustrations/a-living-room-filled-with-furniture-and-a-painting-on-the-wall--pJGuTHRd6E",
+        set: (v) =>  v === "" 
+        ? "https://unsplash.com/illustrations/a-living-room-filled-with-furniture-and-a-painting-on-the-wall--pJGuTHRd6E" 
+        : v,
     },
     price: Number,
     location: String,
