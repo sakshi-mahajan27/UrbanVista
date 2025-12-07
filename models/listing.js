@@ -18,9 +18,9 @@ const listingSchema = new Schema({
     //     }
     image:{
         type: String,
-        default: "https://unsplash.com/illustrations/a-living-room-filled-with-furniture-and-a-painting-on-the-wall--pJGuTHRd6E",
+        default: "https://images.pexels.com/photos/259588/pexels-photo-259588.jpeg",
         set: (v) =>  v === "" 
-        ? "https://unsplash.com/illustrations/a-living-room-filled-with-furniture-and-a-painting-on-the-wall--pJGuTHRd6E" 
+        ? "https://images.pexels.com/photos/259588/pexels-photo-259588.jpeg" 
         : v,
     },
     price: Number,
