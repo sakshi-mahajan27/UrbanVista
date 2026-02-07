@@ -29,7 +29,7 @@ AIRBNB/
 ├── utils/              # Helper functions and error handling
 ├── views/              # EJS templates for the UI
 ├── app.js              # Entry point of the application
-├── .env.example        # Template for environment variables
+├── .env                # Template for environment variables
 └── package.json        # Dependencies and scripts
 
 ```
@@ -79,4 +79,4 @@ This project is [MIT](https://choosealicense.com/licenses/mit/) licensed.
 
 ---
 
-**Created by [Sakshi Mahajan**](https://www.google.com/search?q=https://github.com/sakshi-mahajan27)
+**Created by [Sakshi Mahajan](https://github.com/sakshi-mahajan27)**
