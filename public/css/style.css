@@ -113,3 +113,57 @@ body{
     padding-left: 0;
     padding-right: 0;
 }
+
+.filter-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+#filters {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+}
+
+#filters::-webkit-scrollbar {
+    display: none; 
+}
+
+.filter {
+    text-align: center;
+    margin-right:  4rem;
+    margin-top: 2rem;
+    opacity: 0.7;
+}
+
+.filter:hover {
+    opacity: 1;
+    cursor: pointer;
+}
+
+.filter p {
+    font-size:0.7rem;
+}
+
+.scroll-btn {
+    background: white;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1;
+    opacity: 0.7;
+}
+
+.scroll-btn:hover {
+    opacity: 1;
+}
+
+/* Only show arrows on small screens */
+@media (min-width: 769px) {
+    .scroll-btn {
+        display: none;
+    }
+}

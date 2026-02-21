@@ -72,6 +72,25 @@
               Please provide a valid location.
             </div>
           </div>
+
+          <div class="mb-3">
+            <label for="category" class="form-label">Category</label>
+            <select name="listing[category]" class="form-select" required>
+              <option value="" disabled selected>Select a category</option>
+              <option value="City">City</option>
+              <option value="Beach">Beach</option>
+              <option value="Mountains">Mountains</option>
+              <option value="Castles">Castles</option>
+              <option value="Pools">Pools</option>
+              <option value="Snow">Snow Retreats</option>
+              <option value="Camping">Camping</option>
+              <option value="Farms">Farms</option>
+              <option value="Lake">Lake View</option>
+              <option value="Treehouse">Treehouse</option>
+            </select>
+            <div class="invalid-feedback">
+              Please select a category.
+            </div>
           <br><br>
           <button class="btn btn-dark add-btn mt-3">Add</button>
         </form>

@@ -1,9 +1,75 @@
 <% layout("/layouts/boilerplate") %>
+
 <body>
-    <h3>All Listings</h3>
-    <!-- <form method="GET" action="/listings/new">
-      <button>Create New Listing</button>
-    </form> -->
+  <div class="filter-wrapper">
+    <button class="scroll-btn left">&#10094;</button>
+
+    <div id="filters">
+      <div class="filter">
+        <a href="/listings?category=City" style="text-decoration: none; color: inherit;">
+        <div><i class="fa-solid fa-mountain-city"></i></div>
+        <p>Iconic Cities</p>
+        </a>
+      </div>
+      <div class="filter">
+        <a href="/listings?category=Mountains" style="text-decoration: none; color: inherit;">
+        <div><i class="fa-solid fa-mountain"></i></div>
+        <p>Mountains</p>
+        </a>
+      </div>
+      <div class="filter">
+        <a href="/listings?category=Castles" style="text-decoration: none; color: inherit;">
+        <div><i class="fa-brands fa-fort-awesome"></i></div>
+        <p>Castles</p>
+        </a>
+      </div>
+      <div class="filter">
+        <a href="/listings?category=Pools" style="text-decoration: none; color: inherit;">
+        <div><i class="fa-solid fa-person-swimming"></i></div>
+        <p>Pools</p>
+        </a>
+      </div>
+      <div class="filter">
+        <a href="/listings?category=Camping" style="text-decoration: none; color: inherit;">
+        <div><i class="fa-solid fa-campground"></i></div>
+        <p>Camping</p>
+        </a>
+      </div>
+      <div class="filter">
+        <a href="/listings?category=Farms" style="text-decoration: none; color: inherit;">
+        <div><i class="fa-solid fa-cow"></i></div>
+        <p>Farms</p>
+        </a>
+      </div>
+      <div class="filter">
+        <a href="/listings?category=Snow" style="text-decoration: none; color: inherit;">
+        <div><i class="fa-solid fa-snowflake"></i></div>
+        <p>Snow Retreats</p>
+        </a>
+      </div>
+      <div class="filter">
+        <a href="/listings?category=Beach" style="text-decoration: none; color: inherit;">
+        <div><i class="fa-solid fa-umbrella-beach"></i></div>
+        <p>Beach Front</p>
+        </a>
+      </div>
+      <div class="filter">
+        <a href="/listings?category=Lake" style="text-decoration: none; color: inherit;">
+        <div><i class="fa-solid fa-water"></i></div>
+        <p>Lake View</p>
+        </a>
+      </div>
+      <div class="filter">
+        <a href="/listings?category=Treehouse" style="text-decoration: none; color: inherit;">
+        <div><i class="fa-solid fa-tree-city"></i></div>
+        <p>Treehouse</p>
+        </a>
+      </div>
+    </div>
+
+    <button class="scroll-btn right">&#10095;</button>
+  </div>
+    
     <div class="row row-cols-lg-3  row-cols-md-2 row-cols-sm-1">
       <% for(let listing of allListings) { %>
         <a href="/listings/<%= listing._id %>" class="listing-link">
@@ -22,3 +88,22 @@
     </div>
 </body>
 
+<script>
+  const filters = document.getElementById("filters");
+  const leftBtn = document.querySelector(".left");
+  const rightBtn = document.querySelector(".right");
+
+  leftBtn.addEventListener("click", () => {
+    filters.scrollBy({
+      left: -200,
+      behavior: "smooth"
+    });
+  });
+
+  rightBtn.addEventListener("click", () => {
+    filters.scrollBy({
+      left: 200,
+      behavior: "smooth"
+    });
+  });
+</script>
