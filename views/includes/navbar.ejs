@@ -1,6 +1,12 @@
+<head>
+  <link rel="stylesheet" href="/css/navbar.css">
+</head>
 <nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/listings"><i class="fa-regular fa-compass"></i></a>
+    <a class="navbar-brand" href="/listings">
+      <i class="fa-brands fa-unity brand-icon"></i> 
+      <span class="brand-text">UrbanVista</span>
+    </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" >
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -9,6 +15,15 @@
         <a class="nav-link" href="/listings">Explore</a>
       </div>
       
+      <div class="navbar-nav mx-auto">
+          <form class="d-flex" role="search" action="/listings/search">
+            <input class="form-control me-2 search-input" type="search" name="search-input" placeholder="Search destination">
+            <button class="btn search-btn" type="submit"> 
+              <i class="fa-solid fa-magnifying-glass search-icon"></i> Search
+            </button>
+          </form>
+      </div>
+
       <div class="navbar-nav ms-auto">
         <a class="nav-link" href="/listings/new">UrbanVista your home</a>
         <% if(currUser){ %>

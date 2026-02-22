@@ -78,3 +78,27 @@ module.exports.index = async (req, res) => {
     }
     res.render("listings/index.ejs", { allListings });
 };
+
+module.exports.search = async (req, res) => {
+    let { "search-input": query } = req.query; // Matches name="search-input" in navbar.ejs
+    
+    if (!query) {
+        return res.redirect("/listings");
+    }
+
+    // Search by title or location using a case-insensitive regular expression
+    const allListings = await Listing.find({
+        $or: [
+            { title: { $regex: query, $options: "i" } },
+            { location: { $regex: query, $options: "i" } },
+            { country: { $regex: query, $options: "i" } }
+        ]
+    });
+
+    if (allListings.length === 0) {
+        req.flash("error", "No listings found for your search.");
+        return res.redirect("/listings");
+    }
+
+    res.render("listings/index.ejs", { allListings });
+};

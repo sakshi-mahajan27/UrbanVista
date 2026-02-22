@@ -15,6 +15,9 @@ router.route("/")
 //New Route
 router.get("/new", isLoggedIn, listingController.renderNewForm);
 
+//Search Route
+router.get("/search", wrapAsync(listingController.search));
+
 router.route("/:id")
     .get(wrapAsync (listingController.showListing))
     .put(isLoggedIn, isOwner, upload.single("listing[image]"), validateListing, wrapAsync (listingController.updateListing))

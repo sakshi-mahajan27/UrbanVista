@@ -1,0 +1,40 @@
+.navbar-brand {
+    display: flex !important;
+    align-items: center; 
+    gap: 0.5rem;       
+    color: #fe424d !important; 
+    font-weight: 700;   
+    font-size: 1.5rem;
+}
+
+.brand-icon {
+    color: #fe424d; 
+    font-size: 1.7rem; 
+    display: inline-block;
+}
+
+.search-btn {
+    background-color: #fe424d;
+    color: #fff;
+    border-radius: 25px;
+    padding: 0 1rem 0 1rem;
+    font-size: small;
+    white-space: nowrap;
+}
+
+.search-btn:hover {
+    background-color: #fe424d;
+    color: #fff;
+    
+}
+
+.search-icon {
+    margin-right: 0.5rem;
+    display: inline-block;
+}
+
+.search-input {
+    border-radius: 25px;
+    padding: 0.5rem 3rem 0.5rem 3rem;
+    font-size: small;
+}
