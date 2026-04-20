@@ -1,6 +1,37 @@
 <% layout("layouts/boilerplate") %>
-<div class="row mt-3">
-    <div class="alert alert-danger col-6 offset-3" role="alert">
-        <p> <center><%= message %></center> </p>
+
+<div class="row justify-content-center mt-5 mb-5">
+  <div class="col-12 col-sm-10 col-md-7 col-lg-5">
+    <div class="text-center p-5 rounded-4" style="background:var(--surface-2);border:1.5px solid var(--border);">
+
+      <!-- Icon -->
+      <div class="mb-4">
+        <div class="d-inline-flex align-items-center justify-content-center rounded-circle"
+             style="width:80px;height:80px;background:rgba(239,68,68,.1);">
+          <i class="fa-solid fa-triangle-exclamation" style="font-size:2.2rem;color:var(--danger);" aria-hidden="true"></i>
+        </div>
+      </div>
+
+      <!-- Heading -->
+      <h1 class="h3 fw-800 mb-2" style="color:var(--text-h);letter-spacing:-0.02em;">Oops! Something went wrong</h1>
+      <p class="mb-5" style="color:var(--danger);font-weight:600;font-size:1rem;"><%= message %></p>
+
+      <!-- Actions -->
+      <div class="d-flex flex-column flex-sm-row gap-2 justify-content-center">
+        <a href="/listings" class="btn btn-primary btn-lg">
+          <i class="fa-solid fa-arrow-left me-1" aria-hidden="true"></i>Back to Listings
+        </a>
+        <a href="/" class="btn btn-outline-secondary btn-lg">
+          <i class="fa-solid fa-house me-1" aria-hidden="true"></i>Go Home
+        </a>
+      </div>
+
+      <!-- Hint -->
+      <p class="mt-4 mb-0" style="font-size:0.8rem;color:var(--text-subtle);">
+        <i class="fa-solid fa-circle-info me-1" aria-hidden="true"></i>
+        If this error persists, please contact our support team.
+      </p>
+
     </div>
+  </div>
 </div>

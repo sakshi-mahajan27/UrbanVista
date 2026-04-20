@@ -1,40 +1,61 @@
-.navbar-brand {
-    display: flex !important;
-    align-items: center; 
-    gap: 0.5rem;       
-    color: #fe424d !important; 
-    font-weight: 700;   
-    font-size: 1.5rem;
+/*
+ | navbar.css — supplemental navbar styles
+ | Most rules live in style.css; this file exists for
+ | any overrides specific to the navbar context.
+ | Keep in sync with :root variables in style.css
+ */
+
+/* Ensure navbar sits above Mapbox */
+.navbar { z-index: 1030; }
+
+/* Pill-style Post Listing CTA */
+.nav-item a[href="/listings/new"] {
+    background-color: var(--primary);
+    color: #fff !important;
+    border-radius: 2rem;
+    padding: 0.4rem 1rem !important;
+    font-weight: 600;
+    font-size: 0.875rem;
+    margin-left: 0.25rem;
+    transition: background-color 250ms, transform 250ms, box-shadow 250ms;
 }
 
-.brand-icon {
-    color: #fe424d; 
-    font-size: 1.7rem; 
-    display: inline-block;
+.nav-item a[href="/listings/new"]:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(254, 66, 77, 0.3);
+    color: #fff !important;
 }
 
-.search-btn {
-    background-color: #fe424d;
-    color: #fff;
-    border-radius: 25px;
-    padding: 0 1rem 0 1rem;
-    font-size: small;
-    white-space: nowrap;
+/* Username chip */
+.nav-link[style*="cursor: default"] {
+    cursor: default !important;
+    opacity: 0.85;
+    background-color: var(--surface-2);
+    border-radius: 2rem;
+    padding: 0.35rem 0.85rem !important;
 }
 
-.search-btn:hover {
-    background-color: #fe424d;
-    color: #fff;
-    
+/* Logout link */
+a.nav-link.fw-bold.text-danger {
+    color: var(--danger) !important;
 }
 
-.search-icon {
-    margin-right: 0.5rem;
-    display: inline-block;
+a.nav-link.fw-bold.text-danger:hover {
+    background-color: rgba(239, 68, 68, 0.08) !important;
+    color: #c53030 !important;
 }
 
-.search-input {
-    border-radius: 25px;
-    padding: 0.5rem 3rem 0.5rem 3rem;
-    font-size: small;
+/* Responsive: <992px — mobile collapse */
+@media (max-width: 991.98px) {
+    .navbar-nav {
+        padding-bottom: 0.5rem;
+    }
+
+    .navbar-nav .nav-item a[href="/listings/new"] {
+        display: inline-flex;
+        margin-left: 0;
+        margin-top: 0.25rem;
+        width: fit-content;
+    }
 }

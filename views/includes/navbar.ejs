@@ -1,38 +1,86 @@
-<head>
-  <link rel="stylesheet" href="/css/navbar.css">
-</head>
-<nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="/listings">
-      <i class="fa-brands fa-unity brand-icon"></i> 
+<nav class="navbar navbar-expand-lg sticky-top" aria-label="Main navigation">
+  <div class="container-fluid px-3 px-md-4 px-lg-5">
+
+    <!-- Brand -->
+    <a class="navbar-brand d-flex align-items-center gap-2" href="/listings" aria-label="UrbanVista home">
+      <i class="fa-brands fa-unity brand-icon" aria-hidden="true"></i>
       <span class="brand-text">UrbanVista</span>
     </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" >
+
+    <!-- Toggler -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarContent"
+      aria-controls="navbarContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <a class="nav-link" href="/listings">Explore</a>
-      </div>
-      
-      <div class="navbar-nav mx-auto">
-          <form class="d-flex" role="search" action="/listings/search">
-            <input class="form-control me-2 search-input" type="search" name="search-input" placeholder="Search destination">
-            <button class="btn search-btn" type="submit"> 
-              <i class="fa-solid fa-magnifying-glass search-icon"></i> Search
-            </button>
-          </form>
-      </div>
 
-      <div class="navbar-nav ms-auto">
-        <a class="nav-link" href="/listings/new">UrbanVista your home</a>
+    <!-- Collapsed content -->
+    <div class="collapse navbar-collapse" id="navbarContent">
+
+      <!-- Search – centre on desktop, full-width on mobile -->
+      <form
+        class="d-flex flex-grow-1 mx-lg-4 my-2 my-lg-0"
+        role="search"
+        action="/listings/search"
+        aria-label="Search listings"
+      >
+        <input
+          class="form-control search-input me-2"
+          type="search"
+          name="search-input"
+          placeholder="Search destination…"
+          aria-label="Search destination"
+        >
+        <button class="btn search-btn" type="submit" aria-label="Submit search">
+          <i class="fa-solid fa-magnifying-glass search-icon" aria-hidden="true"></i>
+          <span class="d-none d-sm-inline">Search</span>
+        </button>
+      </form>
+
+      <!-- Right nav links -->
+      <ul class="navbar-nav align-items-lg-center gap-1 ms-lg-auto">
+
+        <li class="nav-item">
+          <a class="nav-link" href="/listings/new">
+            <i class="fa-solid fa-plus" aria-hidden="true"></i>
+            Post Listing
+          </a>
+        </li>
+
         <% if(currUser){ %>
-          <a class="nav-link" href="/logout"><b>Log Out</b></a>
+          <li class="nav-item">
+            <span class="nav-link d-flex align-items-center gap-1" style="cursor:default;">
+              <i class="fa-solid fa-circle-user" aria-hidden="true"></i>
+              <span class="fw-600"><%= currUser.username %></span>
+            </span>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fw-bold text-danger d-flex align-items-center gap-1" href="/logout">
+              <i class="fa-solid fa-arrow-right-from-bracket" aria-hidden="true"></i>Log Out
+            </a>
+          </li>
         <% } else { %>
-          <a class="nav-link" href="/signup"><b>Sign Up</b></a>
-          <a class="nav-link" href="/login"><b>Log In</b></a>
+          <li class="nav-item">
+            <a class="nav-link" href="/signup">
+              <i class="fa-solid fa-user-plus" aria-hidden="true"></i>
+              Sign Up
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fw-600" href="/login">
+              <i class="fa-solid fa-arrow-right-to-bracket" aria-hidden="true"></i>
+              Log In
+            </a>
+          </li>
         <% } %>
-      </div>
-    </div>
-  </div>
+
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
 </nav>

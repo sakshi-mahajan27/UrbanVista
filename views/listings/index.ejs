@@ -1,109 +1,112 @@
 <% layout("/layouts/boilerplate") %>
 
-<body>
-  <div class="filter-wrapper">
-    <button class="scroll-btn left">&#10094;</button>
+<!-- ── Category Filters ── -->
+<section class="filter-wrapper mb-4" aria-label="Filter listings by category">
+  <button class="scroll-btn left" aria-label="Scroll categories left">
+    <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+  </button>
 
-    <div id="filters">
-      <div class="filter">
-        <a href="/listings?category=City" style="text-decoration: none; color: inherit;">
-        <div><i class="fa-solid fa-mountain-city"></i></div>
-        <p>Iconic Cities</p>
-        </a>
-      </div>
-      <div class="filter">
-        <a href="/listings?category=Mountains" style="text-decoration: none; color: inherit;">
-        <div><i class="fa-solid fa-mountain"></i></div>
-        <p>Mountains</p>
-        </a>
-      </div>
-      <div class="filter">
-        <a href="/listings?category=Castles" style="text-decoration: none; color: inherit;">
-        <div><i class="fa-brands fa-fort-awesome"></i></div>
-        <p>Castles</p>
-        </a>
-      </div>
-      <div class="filter">
-        <a href="/listings?category=Pools" style="text-decoration: none; color: inherit;">
-        <div><i class="fa-solid fa-person-swimming"></i></div>
-        <p>Pools</p>
-        </a>
-      </div>
-      <div class="filter">
-        <a href="/listings?category=Camping" style="text-decoration: none; color: inherit;">
-        <div><i class="fa-solid fa-campground"></i></div>
-        <p>Camping</p>
-        </a>
-      </div>
-      <div class="filter">
-        <a href="/listings?category=Farms" style="text-decoration: none; color: inherit;">
-        <div><i class="fa-solid fa-cow"></i></div>
-        <p>Farms</p>
-        </a>
-      </div>
-      <div class="filter">
-        <a href="/listings?category=Snow" style="text-decoration: none; color: inherit;">
-        <div><i class="fa-solid fa-snowflake"></i></div>
-        <p>Snow Retreats</p>
-        </a>
-      </div>
-      <div class="filter">
-        <a href="/listings?category=Beach" style="text-decoration: none; color: inherit;">
-        <div><i class="fa-solid fa-umbrella-beach"></i></div>
-        <p>Beach Front</p>
-        </a>
-      </div>
-      <div class="filter">
-        <a href="/listings?category=Lake" style="text-decoration: none; color: inherit;">
-        <div><i class="fa-solid fa-water"></i></div>
-        <p>Lake View</p>
-        </a>
-      </div>
-      <div class="filter">
-        <a href="/listings?category=Treehouse" style="text-decoration: none; color: inherit;">
-        <div><i class="fa-solid fa-tree-city"></i></div>
-        <p>Treehouse</p>
-        </a>
-      </div>
-    </div>
-
-    <button class="scroll-btn right">&#10095;</button>
+  <div id="filters" role="list">
+    <% const cats = [
+      { href: "City",       icon: "fa-mountain-city", label: "Iconic Cities" },
+      { href: "Mountains",  icon: "fa-mountain",      label: "Mountains"     },
+      { href: "Castles",    icon: "fa-fort-awesome",  label: "Castles",   brand: true },
+      { href: "Pools",      icon: "fa-person-swimming", label: "Pools"     },
+      { href: "Camping",    icon: "fa-campground",    label: "Camping"       },
+      { href: "Farms",      icon: "fa-cow",           label: "Farms"         },
+      { href: "Snow",       icon: "fa-snowflake",     label: "Snow Retreats" },
+      { href: "Beach",      icon: "fa-umbrella-beach",label: "Beach Front"   },
+      { href: "Lake",       icon: "fa-water",         label: "Lake View"     },
+      { href: "Treehouse",  icon: "fa-tree-city",     label: "Treehouse"     },
+    ]; %>
+    <% for(let cat of cats) { %>
+      <a href="/listings?category=<%= cat.href %>" class="filter-link" role="listitem" title="<%= cat.label %>">
+        <div class="filter">
+          <div><i class="<%= cat.brand ? 'fa-brands' : 'fa-solid' %> <%= cat.icon %>" aria-hidden="true"></i></div>
+          <p><%= cat.label %></p>
+        </div>
+      </a>
+    <% } %>
   </div>
-    
-    <div class="row row-cols-lg-3  row-cols-md-2 row-cols-sm-1">
+
+  <button class="scroll-btn right" aria-label="Scroll categories right">
+    <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+  </button>
+</section>
+
+<!-- ── Listings Grid ── -->
+<section class="listings-grid" aria-label="Available listings">
+  <div class="row g-4 row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4">
+    <% if(allListings && allListings.length > 0) { %>
       <% for(let listing of allListings) { %>
-        <a href="/listings/<%= listing._id %>" class="listing-link">
-          <div class="card col listing-card" style="width: 20rem;">
-            <img src="<%= listing.image.url %>" class="card-img-top" alt="listing_image" style="height: 20rem">
-            <div class="card-img-overlay"></div>
-            <div class="card-body">
-              <p class="card-text">
-                <b><%= listing.title %><br></b>
-                &#8377; <%= listing.price.toLocaleString("en-IN") %> /night
-              </p>
-            </div>
-          </div>
-        </a>
+        <div class="col">
+          <a href="/listings/<%= listing._id %>" class="listing-link" aria-label="View <%= listing.title %>">
+            <div class="card listing-card h-100">
+              <!-- Image -->
+              <div class="position-relative overflow-hidden">
+                <img
+                  src="<%= listing.image.url %>"
+                  class="card-img-top"
+                  alt="<%= listing.title %>"
+                  loading="lazy"
+                >
+                <div class="card-img-overlay" aria-hidden="true"></div>
+                <!-- Category chip on image -->
+                <span
+                  class="badge position-absolute"
+                  style="top:0.75rem;left:0.75rem;background:rgba(255,255,255,0.92);color:var(--primary);font-size:0.72rem;"
+                  aria-label="Category: <%= listing.category %>"
+                >
+                  <%= listing.category %>
+                </span>
+              </div>
+
+              <!-- Body -->
+              <div class="card-body d-flex flex-column">
+                <h5 class="card-title" title="<%= listing.title %>"><%= listing.title %></h5>
+                <p class="card-text mb-auto" style="font-size:0.84rem;">
+                  <i class="fa-solid fa-location-dot me-1" style="color:var(--primary);" aria-hidden="true"></i>
+                  <%= listing.location %>, <%= listing.country %>
+                </p>
+                <div class="d-flex justify-content-between align-items-center mt-2 pt-2" style="border-top:1px solid var(--border);">
+                  <span style="font-size:1.05rem;font-weight:800;color:var(--text-h);letter-spacing:-0.01em;">
+                    ₹<%= listing.price.toLocaleString("en-IN") %><small class="fw-500 text-muted" style="font-size:0.75rem;">/night</small>
+                  </span>
+                </div>
+              </div>
+            </div><!-- /.listing-card -->
+          </a>
+        </div><!-- /.col -->
       <% } %>
-    </div>
-</body>
+    <% } else { %>
+      <div class="col-12">
+        <div class="alert alert-info text-center py-5" role="alert">
+          <i class="fa-solid fa-binoculars mb-3 d-block" style="font-size:2.5rem;color:var(--text-subtle);" aria-hidden="true"></i>
+          <h5 class="mb-1" style="color:var(--text-h);">No listings found</h5>
+          <p class="mb-0" style="color:var(--text-muted);font-size:0.9rem;">Try adjusting your search or browse a different category.</p>
+        </div>
+      </div>
+    <% } %>
+  </div>
+</section>
 
 <script>
-  const filters = document.getElementById("filters");
-  const leftBtn = document.querySelector(".left");
-  const rightBtn = document.querySelector(".right");
+  (() => {
+    const filters  = document.getElementById("filters");
+    const leftBtn  = document.querySelector(".scroll-btn.left");
+    const rightBtn = document.querySelector(".scroll-btn.right");
+    if (!filters || !leftBtn || !rightBtn) return;
 
-  leftBtn.addEventListener("click", () => {
-    filters.scrollBy({
-      left: -200,
-      behavior: "smooth"
-    });
-  });
+    function checkOverflow() {
+      const overflow = filters.scrollWidth > filters.clientWidth + 2;
+      leftBtn.classList.toggle("show", overflow);
+      rightBtn.classList.toggle("show", overflow);
+    }
 
-  rightBtn.addEventListener("click", () => {
-    filters.scrollBy({
-      left: 200,
-      behavior: "smooth"
-    });
-  });
+    window.addEventListener("load",   checkOverflow);
+    window.addEventListener("resize", checkOverflow);
+
+    leftBtn.addEventListener("click",  () => filters.scrollBy({ left: -240, behavior: "smooth" }));
+    rightBtn.addEventListener("click", () => filters.scrollBy({ left:  240, behavior: "smooth" }));
+  })();
 </script>

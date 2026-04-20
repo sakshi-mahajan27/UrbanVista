@@ -1,22 +1,116 @@
 <% layout("/layouts/boilerplate") %>
 
-<div class="row mt-3">
-    <div class="col-8 offset-2">
-        <form action="/signup" method="POST" class="needs-validation" novalidate>
-            <h3>Sign Up</h3>
-            <div class="mb-3">
-                <label for="username" class="form-label">Username</label>
-                <input name="username" id="username" type="text" class="form-control" required/>
-            </div>
-            <div class="mb-3">
-                <label for="email" class="form-label">Email</label>
-                <input name="email" id="email" type="email" class="form-control" required/>
-            </div>
-            <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <input name="password" id="password" type="password" class="form-control" required/>
-            </div>
-            <button type="submit" class="btn btn-success">Sign Up</button>
-        </form>
+<div class="row justify-content-center align-items-center" style="min-height:82vh;">
+  <div class="col-12 col-sm-10 col-md-7 col-lg-5 col-xl-4">
+
+    <!-- Brand header -->
+    <div class="text-center mb-5">
+      <div class="d-inline-flex align-items-center justify-content-center rounded-circle mb-3"
+           style="width:64px;height:64px;background:rgba(16,185,129,.12);">
+        <i class="fa-brands fa-unity" style="color:var(--success);font-size:2rem;" aria-hidden="true"></i>
+      </div>
+      <h1 class="h3 fw-800 mb-1" style="color:var(--text-h);letter-spacing:-0.025em;">Join UrbanVista</h1>
+      <p class="mb-0" style="color:var(--text-muted);font-size:0.9rem;">Create your account and start exploring</p>
     </div>
+
+    <!-- Card -->
+    <div class="card shadow-lg border-0" style="border-radius:var(--radius-xl);">
+      <div class="card-body p-4 p-sm-5">
+        <form action="/signup" method="POST" class="needs-validation" novalidate>
+
+          <!-- Username -->
+          <div class="mb-4">
+            <label for="username" class="form-label">Username</label>
+            <div class="input-group">
+              <span class="input-group-text" style="background:var(--surface-2);border-color:var(--border);border-radius:var(--radius-lg) 0 0 var(--radius-lg);color:var(--text-muted);">
+                <i class="fa-solid fa-user fa-sm" aria-hidden="true"></i>
+              </span>
+              <input
+                name="username"
+                id="username"
+                type="text"
+                class="form-control form-control-lg"
+                placeholder="Choose a unique username"
+                required
+                style="border-radius:0 var(--radius-lg) var(--radius-lg) 0;"
+              />
+              <div class="invalid-feedback">Please enter a username.</div>
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div class="mb-4">
+            <label for="email" class="form-label">Email</label>
+            <div class="input-group">
+              <span class="input-group-text" style="background:var(--surface-2);border-color:var(--border);border-radius:var(--radius-lg) 0 0 var(--radius-lg);color:var(--text-muted);">
+                <i class="fa-solid fa-envelope fa-sm" aria-hidden="true"></i>
+              </span>
+              <input
+                name="email"
+                id="email"
+                type="email"
+                class="form-control form-control-lg"
+                placeholder="Enter your email"
+                required
+                style="border-radius:0 var(--radius-lg) var(--radius-lg) 0;"
+              />
+              <div class="invalid-feedback">Please enter a valid email address.</div>
+            </div>
+          </div>
+
+          <!-- Password -->
+          <div class="mb-4">
+            <label for="password" class="form-label">Password</label>
+            <div class="input-group">
+              <span class="input-group-text" style="background:var(--surface-2);border-color:var(--border);border-radius:var(--radius-lg) 0 0 var(--radius-lg);color:var(--text-muted);">
+                <i class="fa-solid fa-lock fa-sm" aria-hidden="true"></i>
+              </span>
+              <input
+                name="password"
+                id="password"
+                type="password"
+                class="form-control form-control-lg"
+                placeholder="Create a strong password"
+                required
+                style="border-radius:0 var(--radius-lg) var(--radius-lg) 0;"
+              />
+              <div class="invalid-feedback">Please enter a password.</div>
+            </div>
+            <small class="text-muted d-block mt-1" style="font-size:0.8rem;">
+              <i class="fa-solid fa-circle-info me-1" aria-hidden="true"></i>Minimum 6 characters
+            </small>
+          </div>
+
+          <!-- Terms -->
+          <div class="form-check mb-5">
+            <input class="form-check-input" type="checkbox" id="terms" required>
+            <label class="form-check-label" for="terms" style="font-size:0.875rem;color:var(--text-body);">
+              I agree to the
+              <a href="/terms" style="color:var(--success);font-weight:600;">Terms of Service</a>
+              and
+              <a href="/privacy" style="color:var(--success);font-weight:600;">Privacy Policy</a>
+            </label>
+            <div class="invalid-feedback">You must agree to continue.</div>
+          </div>
+
+          <button type="submit" class="btn btn-success btn-lg w-100 mb-3">
+            Create Account
+            <i class="fa-solid fa-arrow-right ms-1" aria-hidden="true"></i>
+          </button>
+
+        </form>
+
+        <div class="text-center" style="font-size:0.875rem;color:var(--text-muted);">
+          Already have an account?
+          <a href="/login" style="color:var(--primary);font-weight:600;margin-left:0.25rem;">Log in</a>
+        </div>
+      </div>
+    </div>
+
+    <p class="text-center mt-4" style="font-size:0.78rem;color:var(--text-subtle);">
+      By signing up you agree to our
+      <a href="/terms" style="color:var(--success);font-weight:600;">Terms of Service</a>
+    </p>
+
+  </div>
 </div>
